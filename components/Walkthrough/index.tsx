@@ -7,7 +7,7 @@ const Walkthrough = () => {
   const [pgNum, setPgNum] = useState(0);
 
   return (
-    <div className="flex items-center justify-center h-dvh flex-col re">
+    <div className="flex items-center justify-center h-dvh flex-col animate__animated animate__bounceInRight">
       <div
         className={
           pgNum == 0

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const WelcomePage = () => {
   return (
-    <div className="flex items-center justify-center h-dvh flex-col">
+    <div className="flex items-center justify-center h-dvh flex-col animate__animated animate__bounceInRight">
       <span className="text-lg">Welcome to Application</span>
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
       <span className="text-sm">Log with your Open AI account to continue</span>

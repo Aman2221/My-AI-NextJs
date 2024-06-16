@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const LoginPage = () => {
   return (
-    <div className="flex flex-col items-center w-full px-3">
+    <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInRight">
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
       <span className="text-white text-md text-center pt-3 font-semibold">
         Welcome back
