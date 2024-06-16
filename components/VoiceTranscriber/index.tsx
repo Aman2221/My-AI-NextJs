@@ -41,11 +41,9 @@ const VoiceTrans = ({
           interimTranscript += event.results[i][0].transcript;
         }
       }
-      console.log(interimTranscript); // Optionally show interim transcript
     };
 
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error("Speech recognition error", event);
       setIsRecording(false);
     };
 

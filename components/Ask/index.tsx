@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, FormEvent } from "react";
 import Attachments from "../Attachments";
 import VoiceTrans from "../VoiceTranscriber";
+import { useMyContext } from "@/context/my-context";
 
 const Ask = () => {
   const categories = [
@@ -12,6 +13,10 @@ const Ask = () => {
     "banking",
     "personal",
   ];
+  const { setrIsChatStarted, setPrompt } = useMyContext();
+  const [search, setSearch] = useState("");
+  const [showAttch, setShowAttch] = useState(false);
+  const [showVoice, setShowVoice] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -22,8 +27,15 @@ const Ask = () => {
     const files = event.target.files;
   };
 
-  const [showAttch, setShowAttch] = useState(false);
-  const [showVoice, setShowVoice] = useState(false);
+  const handleInputChage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handelSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setrIsChatStarted(true);
+    setPrompt(search);
+  };
 
   return (
     <>
@@ -51,11 +63,18 @@ const Ask = () => {
           </div>
 
           <div className="border border-slate-60 items-center flex rounded-md pr-2">
-            <input
-              type="text"
-              className="p-2 bg-transparent outline-none w-full"
-              placeholder="Ask me anything..."
-            />
+            <form onSubmit={handelSubmit}>
+              <input
+                type="text"
+                className="p-2 bg-transparent outline-none w-full"
+                placeholder="Ask me anything..."
+                value={search}
+                onChange={handleInputChage}
+              />
+              <button type="submit" className="hidden">
+                Subit
+              </button>
+            </form>
             <div className="flex items-center gap-3 flex-1">
               <input
                 type="file"
@@ -63,6 +82,7 @@ const Ask = () => {
                 className="hidden"
                 onChange={handleFileChange}
               />
+
               <i
                 onClick={handleButtonClick}
                 className="bx bxs-camera text-2xl"

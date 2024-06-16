@@ -1,7 +1,9 @@
+import { useMyContext } from "@/context/my-context";
 import React from "react";
-import VoiceRecorder from "../VoiceRecorder";
 
 const Conversations = () => {
+  const { prompt } = useMyContext();
+
   return (
     <>
       {/* for user */}
@@ -13,7 +15,7 @@ const Conversations = () => {
         <div className="flex gap-3 items-center mb-3">
           <i className="invisible bx bxs-user-circle text-white text-4xl "></i>
           <span id="user-question" className="text-md font-normal">
-            Show me CGPA mark at UG
+            {prompt}
           </span>
         </div>
       </div>
