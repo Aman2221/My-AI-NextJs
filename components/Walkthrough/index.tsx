@@ -49,7 +49,7 @@ const Walkthrough = () => {
             "border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md absolute bottom-20 bg-blue-400"
           }
         >
-          Get started
+          Get&nbsp;started
         </Link>
       ) : (
         <button
@@ -72,8 +72,8 @@ export const WalkthroughOne = () => {
       </span>
       <span className="text-white text-sm text-center pt-3 font-normal px-10">
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
+        industry.&nbsp;Lorem Ipsum has been the industrys standard dummy text
+        ever since the 1500s
       </span>
     </>
   );
@@ -88,8 +88,8 @@ export const WalkthroughTwo = () => {
       </span>
       <span className="text-white text-sm text-center pt-3 font-normal px-10">
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
+        industry. Lorem Ipsum has been the industrys standard dummy text ever
+        since the 1500s
       </span>
     </>
   );
@@ -104,8 +104,8 @@ export const WalkthroughThree = () => {
       </span>
       <span className="text-white text-sm text-center pt-3 font-normal px-10">
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
+        industry. Lorem Ipsum has been the industrys standard dummy text ever
+        since the 1500s
       </span>
     </>
   );

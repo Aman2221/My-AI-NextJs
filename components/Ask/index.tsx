@@ -31,7 +31,10 @@ const Ask = () => {
         <div className="flex gap-2 overflow-y-scroll w-dvw mb-3 pl-3">
           {categories.map((item: string) => {
             return (
-              <span className="border border-slate-400 py-1 px-2 rounded-md">
+              <span
+                key={item}
+                className="border border-slate-400 py-1 px-2 rounded-md"
+              >
                 {item}
               </span>
             );
