@@ -7,7 +7,7 @@ const Walkthrough = () => {
   const [pgNum, setPgNum] = useState(0);
 
   return (
-    <div className="flex items-center justify-center h-dvh flex-col">
+    <div className="flex items-center justify-center h-dvh flex-col re">
       <div
         className={
           pgNum == 0
@@ -22,8 +22,8 @@ const Walkthrough = () => {
       <div
         className={
           pgNum == 1
-            ? "absolute right-0 transition-all"
-            : "absolute -right-full transition-all"
+            ? "absolute left-0 transition-all"
+            : "absolute -left-full transition-all"
         }
       >
         <div className="flex items-center justify-center flex-col w-dvw">
@@ -33,8 +33,8 @@ const Walkthrough = () => {
       <div
         className={
           pgNum == 2
-            ? "absolute right-0 transition-all"
-            : "absolute -right-full transition-all"
+            ? "absolute left-0 transition-all"
+            : "absolute -left-full transition-all"
         }
       >
         <div className="flex items-center justify-center flex-col w-dvw">

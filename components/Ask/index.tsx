@@ -79,7 +79,7 @@ const Ask = () => {
           </div>
         </div>
       </div>
-      <div className="">
+      <>
         <Attachments
           showAttch={showAttch}
           onClose={() => setShowAttch(!showAttch)}
@@ -88,7 +88,7 @@ const Ask = () => {
           showTrans={showVoice}
           onClose={() => setShowVoice(!showVoice)}
         />
-      </div>
+      </>
     </>
   );
 };
