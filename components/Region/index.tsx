@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface region {
@@ -25,7 +26,9 @@ const ChooseRegion = () => {
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
-        <Image height={28} width={28} alt="logo" src={"/img/logo.svg"} />
+        <Link href={"/home"}>
+          <i className="bx bx-chevron-left text-4xl font-bold"></i>
+        </Link>
         <span className="text-md">Region and language</span>
         <span></span>
       </div>

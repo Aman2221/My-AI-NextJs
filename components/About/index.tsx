@@ -34,8 +34,10 @@ const AboutPage = () => {
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
-        <Image height={28} width={28} alt="logo" src={"/img/logo.svg"} />
-        <span className="text-md">Linked Accounts</span>
+        <Link href={"/home"}>
+          <i className="bx bx-chevron-left text-4xl font-bold"></i>
+        </Link>
+        <span className="text-md">About</span>
         <span></span>
       </div>
       <div className="">

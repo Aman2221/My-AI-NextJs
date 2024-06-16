@@ -1,14 +1,9 @@
 import React from "react";
-import NavBar from "../Nav";
-import Ask from "../Ask";
-import Attachments from "../Attachments";
 import VoiceRecorder from "../VoiceRecorder";
 
 const Conversations = () => {
   return (
-    <div>
-      <NavBar />
-
+    <>
       {/* for user */}
       <div className="px-3 my-4">
         <div className="flex gap-3 items-center mb-3">
@@ -39,9 +34,7 @@ const Conversations = () => {
           </span>
         </div>
       </div>
-      <Ask />
-      <VoiceRecorder />
-    </div>
+    </>
   );
 };
 

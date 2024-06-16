@@ -38,7 +38,9 @@ const LinkedAccount = () => {
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
-        <Image height={28} width={28} alt="logo" src={"/img/logo.svg"} />
+        <Link href={"/home"}>
+          <i className="bx bx-chevron-left text-4xl font-bold"></i>
+        </Link>
         <span className="text-md">Theme</span>
         <span></span>
       </div>
