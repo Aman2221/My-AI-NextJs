@@ -1,0 +1,48 @@
+import React from "react";
+import NavBar from "../Nav";
+import Ask from "../Ask";
+import Attachments from "../Attachments";
+import VoiceRecorder from "../VoiceRecorder";
+
+const Conversations = () => {
+  return (
+    <div>
+      <NavBar />
+
+      {/* for user */}
+      <div className="px-3 my-4">
+        <div className="flex gap-3 items-center mb-3">
+          <i className="bx bxs-user-circle text-white text-4xl"></i>
+          <span className="text-lg font-semibold">You</span>
+        </div>
+        <div className="flex gap-3 items-center mb-3">
+          <i className="invisible bx bxs-user-circle text-white text-4xl "></i>
+          <span id="user-question" className="text-md font-normal">
+            Show me CGPA mark at UG
+          </span>
+        </div>
+      </div>
+
+      {/* response from AI */}
+      <div className="px-3 my-4">
+        <div className="flex gap-3 items-start mb-3">
+          <div>
+            <span className="text-md font-semibold rounded-full w-8 h-8 bg-blue-600 flex items-center justify-center">
+              AI
+            </span>
+          </div>
+
+          <span id="user-question" className="text-md font-normal">
+            Use the invisible utility to hide an element, but still maintain its
+            place in the DOM, affecting the layout of other elements (compare
+            with hidden from the display documentation).
+          </span>
+        </div>
+      </div>
+      <Ask />
+      <VoiceRecorder />
+    </div>
+  );
+};
+
+export default Conversations;
