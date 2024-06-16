@@ -7,7 +7,10 @@ const SignUpPage = () => {
     <div className="flex flex-col items-center w-full px-3">
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
       <span className="text-white text-md text-center pt-3 font-semibold">
-        Welcome back
+        Create Your Account
+      </span>
+      <span className="text-white text-sm text-center pt-3 font-semibold">
+        Create an account to view and manage <br /> your work
       </span>
       <input
         type="text"
@@ -15,14 +18,17 @@ const SignUpPage = () => {
         className="border border-sky-500 bg-none bg-transparent outline-none w-full p-2 mt-6"
       />
 
-      <button className=" button-bg text-blue-200 w-full p-2 text-md mt-6">
+      <Link
+        href="/home"
+        className=" text-center button-bg text-blue-200 w-full p-2 text-md mt-6"
+      >
         Continue
-      </button>
+      </Link>
 
       <span className="mt-6">
-        <span>Didn’t have an account ? </span>
+        <span>Already have an account ? </span>
         <Link className="text-blue-200" href={"/login"}>
-          Sign up
+          Log in
         </Link>
       </span>
 

@@ -18,5 +18,5 @@ import WalkthroughOne, {
 import WelcomePage from "@/components/Welcome";
 
 export default function Home() {
-  return <AboutPage />;
+  return <WalkthroughOne />;
 }

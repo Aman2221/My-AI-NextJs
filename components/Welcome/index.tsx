@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const WelcomePage = () => {
   return (
@@ -8,12 +9,18 @@ const WelcomePage = () => {
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
       <span className="text-sm">Log with your Open AI account to continue</span>
       <div className="flex items-center gap-4 w-full mt-10">
-        <button className="button-bg text-blue-200 w-full p-2 text-md rounded-lg">
+        <Link
+          href="sign-up"
+          className="button-bg text-blue-200 w-full p-2 text-md rounded-lg text-center"
+        >
           Sign up
-        </button>
-        <button className="button-bg text-blue-200 w-full p-2 text-md rounded-lg">
+        </Link>
+        <Link
+          href="login"
+          className="button-bg text-blue-200 w-full p-2 text-md rounded-lg text-center"
+        >
           Log in
-        </button>
+        </Link>
       </div>
     </div>
   );

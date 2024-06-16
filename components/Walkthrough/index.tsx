@@ -1,9 +1,71 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useState } from "react";
 
-const WalkthroughOne = () => {
+const Walkthrough = () => {
+  const [pgNum, setPgNum] = useState(0);
+
   return (
     <div className="flex items-center justify-center h-dvh flex-col">
+      <div
+        className={
+          pgNum == 0
+            ? "absolute left-0 transition-all"
+            : "absolute -left-full transition-all"
+        }
+      >
+        <div className="flex items-center justify-center flex-col w-dvw">
+          <WalkthroughOne />
+        </div>
+      </div>
+      <div
+        className={
+          pgNum == 1
+            ? "absolute right-0 transition-all"
+            : "absolute -right-full transition-all"
+        }
+      >
+        <div className="flex items-center justify-center flex-col w-dvw">
+          <WalkthroughTwo />
+        </div>
+      </div>
+      <div
+        className={
+          pgNum == 2
+            ? "absolute right-0 transition-all"
+            : "absolute -right-full transition-all"
+        }
+      >
+        <div className="flex items-center justify-center flex-col w-dvw">
+          <WalkthroughThree />
+        </div>
+      </div>
+
+      {pgNum == 2 ? (
+        <Link
+          href="/welcome"
+          className={
+            "border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md absolute bottom-20 bg-blue-400"
+          }
+        >
+          Get started
+        </Link>
+      ) : (
+        <button
+          onClick={() => setPgNum(pgNum + 1)}
+          className={`border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md absolute bottom-20 `}
+        >
+          Next
+        </button>
+      )}
+    </div>
+  );
+};
+
+export const WalkthroughOne = () => {
+  return (
+    <>
       <Image height={200} width={200} alt="logo" src={"/img/walk1.svg"} />
       <span className="text-white text-md text-center pt-3 font-semibold">
         Walkthrough 1
@@ -13,16 +75,13 @@ const WalkthroughOne = () => {
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s,
       </span>
-      <button className="border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md">
-        Next
-      </button>
-    </div>
+    </>
   );
 };
 
 export const WalkthroughTwo = () => {
   return (
-    <div className="flex items-center justify-center h-dvh flex-col">
+    <>
       <Image height={200} width={200} alt="logo" src={"/img/walk2.svg"} />
       <span className="text-white text-md text-center pt-3 font-semibold">
         Walkthrough 2
@@ -32,16 +91,13 @@ export const WalkthroughTwo = () => {
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s,
       </span>
-      <button className="border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md">
-        Next
-      </button>
-    </div>
+    </>
   );
 };
 
 export const WalkthroughThree = () => {
   return (
-    <div className="flex items-center justify-center h-dvh flex-col">
+    <>
       <Image height={200} width={200} alt="logo" src={"/img/walk3.svg"} />
       <span className="text-white text-md text-center pt-3 font-semibold">
         Walkthrough 3
@@ -51,10 +107,7 @@ export const WalkthroughThree = () => {
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s,
       </span>
-      <button className="border border-sky-500 bg-sky-500 bg-none px-6 mt-10 py-3 rounded-md">
-        Get Started
-      </button>
-    </div>
+    </>
   );
 };
-export default WalkthroughOne;
+export default Walkthrough;

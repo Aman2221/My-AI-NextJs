@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SideBar = () => {
   return (
-    <div className="w-72 ">
+    <div className="w-72 bg-slate-800 h-dvh z-10">
       <div className="flex items-center bg-blue-500 gap-2 px-3  py-2">
         <Image height={28} width={28} alt="logo" src={"/img/logo.svg"} />
         <span className="text-md">Aman Singh</span>

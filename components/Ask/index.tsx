@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import Attachments from "../Attachments";
 
 const Ask = () => {
   const categories = [
@@ -9,9 +11,9 @@ const Ask = () => {
     "banking",
     "personal",
   ];
-
+  const [showAttch, setShowAttch] = useState(false);
   return (
-    <div className="absolute bottom-0">
+    <div className="absolute bottom-0 -z-10">
       <div className="flex gap-2 overflow-y-scroll w-dvw mb-3 pl-3">
         {categories.map((item: string) => {
           return (
@@ -21,7 +23,7 @@ const Ask = () => {
           );
         })}
       </div>
-      <div className="flex items-center justify-between gap-3 mb-3 px-3">
+      <div className="flex items-center justify-start gap-3 mb-3 px-3">
         <div className="w-12 h-12 rounded-full bg-blue-600 flex item-center justify-center p-2">
           <Image
             height={50}
@@ -31,18 +33,27 @@ const Ask = () => {
           />
         </div>
 
-        <div className="border border-slate-600 w-full flex items-center mr-3 rounded-md pr-2">
+        <div className="border border-slate-60 items-center flex rounded-md pr-2">
           <input
             type="text"
-            className="flex-1 p-2 bg-transparent outline-none"
+            className="p-2 bg-transparent outline-none w-full"
             placeholder="Ask me anything..."
           />
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-1">
             <i className="bx bxs-camera text-2xl"></i>
-            <i className="bx bx-link-alt text-2xl"></i>
+            <i
+              onClick={() => setShowAttch(!showAttch)}
+              className="bx bx-link-alt text-2xl"
+            ></i>
             <i className="bx bxs-microphone text-2xl"></i>
           </div>
         </div>
+      </div>
+      <div className="relative">
+        <Attachments
+          showAttch={showAttch}
+          onClose={() => setShowAttch(!showAttch)}
+        />
       </div>
     </div>
   );
