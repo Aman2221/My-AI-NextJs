@@ -11,7 +11,7 @@ const Attachments = ({
     <div
       className={
         showAttch
-          ? "absolute -bottom-full transition-all w-full"
+          ? "absolute bottom-0 transition-all w-full"
           : "absolute -left-full transition-all w-full"
       }
     >
