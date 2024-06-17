@@ -10,7 +10,7 @@ const LinkedAccount = () => {
         <Link href={"/home"}>
           <i className="bx bx-chevron-left text-4xl font-bold"></i>
         </Link>
-        <span className="text-md">Theme</span>
+        <span className="text-md">Linked accounts</span>
         <span></span>
       </div>
       <div className="">

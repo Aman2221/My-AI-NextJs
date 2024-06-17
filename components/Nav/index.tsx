@@ -26,18 +26,14 @@ const NavBar = () => {
   return (
     <>
       <div className="flex justify-between items-center p-3 shadow shadow-slate-400">
-        {showSidebar ? (
-          <i
-            onClick={() => setShowSidebar(!showSidebar)}
-            className="bx bx-x text-2xl"
-          ></i>
-        ) : (
-          <i
-            onClick={() => setShowSidebar(!showSidebar)}
-            className="bx bx-menu-alt-left text-2xl"
-          ></i>
-        )}
-
+        <i
+          onClick={() => setShowSidebar(false)}
+          className={showSidebar ? "flex bx bx-x text-2xl" : "hidden"}
+        ></i>
+        <i
+          onClick={() => setShowSidebar(true)}
+          className={showSidebar ? "hidden" : "bx bx-menu-alt-left text-2xl"}
+        ></i>
         <div className="flex gap-2 items-center">
           <Image
             height={30}

@@ -19,19 +19,6 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
                 <span className="text-sm">{item}</span>
               </div>
             ))}
-
-            <div className="bg-slate-900 p-4 rounded-lg">
-              <span className="text-sm">When my last healthcare checkup?</span>
-            </div>
-            <div className="bg-slate-900 p-4 rounded-lg">
-              <span className="text-sm">When my last healthcare checkup?</span>
-            </div>
-            <div className="bg-slate-900 p-4 rounded-lg">
-              <span className="text-sm">When my last healthcare checkup?</span>
-            </div>
-            <div className="bg-slate-900 p-4 rounded-lg">
-              <span className="text-sm">When my last healthcare checkup?</span>
-            </div>
           </div>
         </div>
       )}
