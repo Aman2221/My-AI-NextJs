@@ -141,7 +141,7 @@ const Ask = () => {
           </div>
         </div>
       </div>
-      <div className="animate__animated animate__slideInUp" ref={sidebarRef}>
+      <div ref={sidebarRef}>
         <Attachments
           showAttch={showAttch}
           onClose={() => setShowAttch(!showAttch)}
