@@ -35,6 +35,7 @@ const Ask = () => {
     e.preventDefault();
     setrIsChatStarted(true);
     setPrompt(search);
+    setSearch("");
   };
 
   return (

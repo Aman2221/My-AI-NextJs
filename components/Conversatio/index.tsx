@@ -8,7 +8,7 @@ const Conversations = () => {
     <>
       {/* for user */}
       <div className="px-3 my-4">
-        <div className="flex gap-3 items-center mb-3">
+        <div className="flex gap-3 items-center mb-0">
           <i className="bx bxs-user-circle text-white text-4xl"></i>
           <span className="text-lg font-semibold">You</span>
         </div>

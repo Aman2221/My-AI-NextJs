@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useRef } from "react";
 
 const Attachments = ({
   showAttch,
@@ -7,6 +8,76 @@ const Attachments = ({
   showAttch: boolean;
   onClose: () => void;
 }) => {
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const [file, setFile] = useState<File | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [docsData, setDocsData] = useState([
+    {
+      type: "pdf",
+      extension: "pdf",
+      icon: "bxs-file-pdf",
+    },
+    {
+      type: "Excel",
+      extension: "xlsx",
+      icon: "bx-spreadsheet",
+    },
+    {
+      type: "Word",
+      extension: "docx",
+      icon: "bxs-file-doc",
+    },
+    {
+      type: "Notepad",
+      extension: "txt",
+      icon: "bxs-notepad",
+    },
+    {
+      type: "One",
+      extension: "one",
+      icon: "bxs-hdd",
+    },
+    {
+      type: "One note",
+      extension: "one",
+      icon: "bxs-dock-top",
+    },
+    {
+      type: "Power point",
+      extension: "txt",
+      icon: "bxl-microsoft",
+    },
+    {
+      type: "One Drive",
+      extension: "txt",
+      icon: "bxl-microsoft",
+    },
+  ]);
+
+  const handleButtonClick = (index: number) => {
+    if (fileInputRefs.current[index]) {
+      fileInputRefs.current[index]?.click();
+      onClose();
+    }
+  };
+
+  const setFileInputRef = (el: HTMLInputElement | null, index: number) => {
+    fileInputRefs.current[index] = el;
+  };
+
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    extension: string
+  ) => {
+    const file = event.target.files?.[0];
+    if (file && file.name.endsWith(`.${extension}`)) {
+      console.log("File selected:", file);
+      setFile(file);
+    } else {
+      console.error("Invalid file type");
+    }
+  };
+
   return (
     <div
       className={
@@ -17,33 +88,31 @@ const Attachments = ({
     >
       <div className="bg-slate-900 py-6 w-full">
         <div className="grid grid-cols-3 gap-x-4 gap-y-6 gap place-items-center ">
-          <div
-            onClick={onClose}
-            className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center"
-          >
-            <i className="bx bxs-file-pdf text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bx-spreadsheet text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxs-file-doc text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxs-notepad text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxs-note text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxs-hdd text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxs-dock-top text-2xl"></i>
-          </div>
-          <div className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center">
-            <i className="bx bxl-microsoft text-2xl"></i>
-          </div>
+          {docsData.map((item, index) => {
+            return (
+              <div
+                key={item.extension}
+                className="flex items-center justify-center flex-col"
+              >
+                <input
+                  type="file"
+                  ref={(el) => setFileInputRef(el, index)}
+                  className="hidden"
+                  accept={`.${item.extension}`}
+                  name={item.type}
+                  id={item.type}
+                  onChange={(e) => handleFileChange(e, item.extension)}
+                />
+                <div
+                  onClick={() => handleButtonClick(index)}
+                  className="shadow shadow-slate-50 rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  <i className={`bx ${item.icon} text-2xl`}></i>
+                </div>
+                <span className="text-xs mt-2 capitalize">{item.type}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

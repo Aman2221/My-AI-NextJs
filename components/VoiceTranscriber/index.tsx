@@ -6,6 +6,7 @@ import {
   SpeechRecognitionEvent,
 } from "@/interfaces";
 import { useState, useRef, useEffect } from "react";
+import { useMyContext } from "@/context/my-context";
 
 const VoiceTrans = ({
   showTrans,
@@ -14,6 +15,7 @@ const VoiceTrans = ({
   showTrans: boolean;
   onClose: () => void;
 }) => {
+  const { setrIsChatStarted, setPrompt } = useMyContext();
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [transcript, setTranscript] = useState<string>("");
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -77,6 +79,12 @@ const VoiceTrans = ({
     }
   };
 
+  const handleSend = () => {
+    setPrompt(transcript);
+    setrIsChatStarted(true);
+    setTranscript("");
+  };
+
   return (
     <div
       className={
@@ -107,7 +115,7 @@ const VoiceTrans = ({
                 ></i>
               )}
             </div>
-            <div>
+            <div onClick={handleSend}>
               <i className="bx bx-send text-2xl"></i>
             </div>
           </div>
