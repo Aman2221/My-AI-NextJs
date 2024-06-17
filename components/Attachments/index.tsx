@@ -9,7 +9,7 @@ const Attachments = ({
   onClose: () => void;
 }) => {
   const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [docsData, setDocsData] = useState([
     {
@@ -69,13 +69,15 @@ const Attachments = ({
     event: React.ChangeEvent<HTMLInputElement>,
     extension: string
   ) => {
-    const file = event.target.files?.[0];
-    if (file && file.name.endsWith(`.${extension}`)) {
-      console.log("File selected:", file);
-      setFile(file);
-    } else {
-      console.error("Invalid file type");
-    }
+    const files = Array.from(event.target.files || []);
+    setFile(files);
+    // important code
+    // const file = event.target.files?.[0];
+    // if (file && file.name.endsWith(`.${extension}`)) {
+
+    // } else {
+    //   console.error("Invalid file type");
+    // }
   };
 
   return (
@@ -91,7 +93,7 @@ const Attachments = ({
           {docsData.map((item, index) => {
             return (
               <div
-                key={item.extension}
+                key={item.type}
                 className="flex items-center justify-center flex-col"
               >
                 <input
@@ -102,6 +104,7 @@ const Attachments = ({
                   name={item.type}
                   id={item.type}
                   onChange={(e) => handleFileChange(e, item.extension)}
+                  multiple
                 />
                 <div
                   onClick={() => handleButtonClick(index)}

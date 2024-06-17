@@ -1,40 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface acc {
-  name: string;
-  isActive: boolean;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const LinkedAccount = () => {
-  const [acounts, setAcounts] = useState<acc[]>([
-    {
-      name: "SMS",
-      isActive: false,
-    },
-    {
-      name: "Linkedin",
-      isActive: false,
-    },
-    {
-      name: "Outlook",
-      isActive: false,
-    },
-    {
-      name: "Gmail",
-      isActive: false,
-    },
-    {
-      name: "Phone pay",
-      isActive: false,
-    },
-    {
-      name: "G pay",
-      isActive: false,
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
@@ -45,7 +14,7 @@ const LinkedAccount = () => {
         <span></span>
       </div>
       <div className="">
-        {acounts.map((item: acc, index: number) => (
+        {dummyData.accounts.map((item, index) => (
           <div
             className="flex justify-between mt-3 border-b border-slate-600 px-3 py-4"
             key={index}

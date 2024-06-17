@@ -1,36 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface feed {
-  name: string;
-  url: string;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const AboutPage = () => {
-  const [aboutPages, setAboutPgs] = useState<feed[]>([
-    {
-      name: "Terms of use ",
-      url: "/terms-of-use",
-    },
-    {
-      name: "About our ads",
-      url: "/about-ads",
-    },
-    {
-      name: "How we personalize",
-      url: "/presonalizations",
-    },
-    {
-      name: "Third-party notices",
-      url: "/third-party",
-    },
-    {
-      name: "Build version",
-      url: "/build-version",
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
@@ -41,7 +14,7 @@ const AboutPage = () => {
         <span></span>
       </div>
       <div className="">
-        {aboutPages.map((item: feed, index: number) => (
+        {dummyData.aboutPage.map((item, index) => (
           <div
             className="flex justify-between items-center mt-3 border-b border-slate-600 px-3 py-4"
             key={index}

@@ -1,12 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import ExamplePrompts from "../Prompts";
-import Ask from "../Ask";
 import SideBar from "../SideBar";
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      sidebarRef.current &&
+      !sidebarRef.current.contains(event.target as Node)
+    ) {
+      setShowSidebar(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <div className="flex justify-between items-center p-3 shadow shadow-slate-400">
@@ -34,6 +50,7 @@ const NavBar = () => {
         <i className="bx bx-refresh text-2xl"></i>
       </div>
       <div
+        ref={sidebarRef}
         className={
           showSidebar
             ? "absolute left-0 transition-all"

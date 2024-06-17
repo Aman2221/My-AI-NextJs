@@ -1,32 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface acc {
-  name: string;
-  isActive: boolean;
-  icon: string;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const ChooseTheme = () => {
-  const [themes, setThemes] = useState<acc[]>([
-    {
-      name: "Light",
-      isActive: false,
-      icon: "bx-sun",
-    },
-    {
-      name: "Dark",
-      isActive: false,
-      icon: "bx-moon",
-    },
-    {
-      name: "Automatic",
-      isActive: true,
-      icon: "bxs-circle-half",
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
@@ -37,7 +14,7 @@ const ChooseTheme = () => {
         <span></span>
       </div>
       <div className="">
-        {themes.map((item: acc, index: number) => (
+        {dummyData.themChoices.map((item, index) => (
           <div
             className="flex justify-between items-center mt-3 border-b border-slate-600 px-3 py-4"
             key={index}

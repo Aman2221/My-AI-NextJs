@@ -1,36 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface acc {
-  name: string;
-  url: string;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const PolicyPage = () => {
-  const [pages, setPages] = useState<acc[]>([
-    {
-      name: "Privacy Statement",
-      url: "/privacy-policy",
-    },
-    {
-      name: "Privacy Dashboard",
-      url: "/privacy-dashboad",
-    },
-    {
-      name: "Clear app data",
-      url: "/clear-data",
-    },
-    {
-      name: "Block ads",
-      url: "/block-adds",
-    },
-    {
-      name: "Delete account",
-      url: "/delete-account",
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3  border-b border-slate-600 ">
@@ -41,7 +14,7 @@ const PolicyPage = () => {
         <span></span>
       </div>
       <div className="">
-        {pages.map((item: acc, index: number) => (
+        {dummyData.policyPages.map((item, index) => (
           <Link
             href={item.url}
             className="flex justify-between mt-3 border-b border-slate-600 px-3 py-4"

@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Conversations from "../Conversatio";
+import dummyData from "@/json/index.json";
 
 const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
   return (
@@ -13,9 +14,12 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
             Your every day AI compansion
           </span>
           <div className="grid grid-cols-2 gap-4 mt-10">
-            <div className="bg-slate-900 p-4 rounded-lg">
-              <span className="text-sm">When my last healthcare checkup?</span>
-            </div>
+            {dummyData.examplePrompts.map((item, index) => (
+              <div key={index} className="bg-slate-900 p-4 rounded-lg">
+                <span className="text-sm">{item}</span>
+              </div>
+            ))}
+
             <div className="bg-slate-900 p-4 rounded-lg">
               <span className="text-sm">When my last healthcare checkup?</span>
             </div>

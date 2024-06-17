@@ -1,28 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface feed {
-  name: string;
-  icon: string;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const FeedbackPage = () => {
-  const [feedback, setFeedback] = useState<feed[]>([
-    {
-      name: "I like something",
-      icon: "bx-happy-alt",
-    },
-    {
-      name: "I don’t like something",
-      icon: "bx-sad",
-    },
-    {
-      name: "I have a suggestion",
-      icon: "bx-happy-beaming",
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
@@ -33,7 +14,7 @@ const FeedbackPage = () => {
         <span></span>
       </div>
       <div className="">
-        {feedback.map((item: feed, index: number) => (
+        {dummyData.feedbackPages.map((item, index) => (
           <div
             className="flex justify-between items-center mt-3 border-b border-slate-600 px-3 py-4"
             key={index}

@@ -1,28 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-
-interface region {
-  name: string;
-  value: string;
-}
+import React from "react";
+import dummyData from "@/json/index.json";
 
 const ChooseRegion = () => {
-  const [regionData, setRegionData] = useState<region[]>([
-    {
-      name: "Country /Region",
-      value: "India",
-    },
-    {
-      name: "Display language",
-      value: "English",
-    },
-    {
-      name: "Speech language",
-      value: "English (India)",
-    },
-  ]);
   return (
     <div>
       <div className="flex justify-between items-center p-3 border-b border-slate-600">
@@ -33,7 +14,7 @@ const ChooseRegion = () => {
         <span></span>
       </div>
       <div className="">
-        {regionData.map((item: region, index: number) => (
+        {dummyData.regionPages.map((item, index) => (
           <div
             className="flex justify-between items-center mt-3 border-b border-slate-600 px-3 py-4"
             key={index}

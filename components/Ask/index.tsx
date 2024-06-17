@@ -1,20 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef, FormEvent, useEffect } from "react";
 import Attachments from "../Attachments";
 import VoiceTrans from "../VoiceTranscriber";
 import { useMyContext } from "@/context/my-context";
+import dummyData from "@/json/index.json";
 
 const Ask = () => {
-  const categories = [
-    "healthcare",
-    "financial",
-    "investement",
-    "banking",
-    "personal",
-  ];
+  const sidebarRef = useRef<HTMLDivElement>(null);
   const { setrIsChatStarted, setPrompt } = useMyContext();
   const [search, setSearch] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
   const [showAttch, setShowAttch] = useState(false);
   const [showVoice, setShowVoice] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +20,8 @@ const Ask = () => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
+    const files = Array.from(event.target.files || []);
+    setFiles(files);
   };
 
   const handleInputChage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,11 +35,33 @@ const Ask = () => {
     setSearch("");
   };
 
+  const handleRemoveImg = (index: number) => {
+    const updFiles = files.splice(index, 1);
+    setFiles([...files]);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      sidebarRef.current &&
+      !sidebarRef.current.contains(event.target as Node)
+    ) {
+      setShowAttch(false);
+      setShowVoice(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <div className="absolute bottom-0 -z-10">
         <div className="flex gap-2 overflow-y-scroll w-dvw mb-3 pl-3">
-          {categories.map((item: string) => {
+          {dummyData.categories.map((item: string) => {
             return (
               <span
                 key={item}
@@ -53,6 +72,26 @@ const Ask = () => {
             );
           })}
         </div>
+        <div className="flex items-center">
+          {files.map((file, index) => {
+            const objectUrl = URL.createObjectURL(file);
+            return (
+              <div
+                key={file.name}
+                className="flex items-center justify-start gap-3 mb-3 px-3 relative h-20 w-20"
+              >
+                <span
+                  onClick={() => handleRemoveImg(index)}
+                  className="absolute top-1 w-5 h-5 bg-slate-600 left-1 rounded-full flex items-center justify-center"
+                >
+                  <i className="bx bx-x"></i>
+                </span>
+                <Image height={50} width={50} alt="img" src={objectUrl} />
+              </div>
+            );
+          })}
+        </div>
+
         <div className="flex items-center justify-start gap-3 mb-3 px-3">
           <div className="w-12 h-12 rounded-full bg-blue-600 flex item-center justify-center p-2">
             <Image
@@ -73,7 +112,7 @@ const Ask = () => {
                 onChange={handleInputChage}
               />
               <button type="submit" className="hidden">
-                Subit
+                Submit
               </button>
             </form>
             <div className="flex items-center gap-3 flex-1">
@@ -82,6 +121,8 @@ const Ask = () => {
                 ref={fileInputRef}
                 className="hidden"
                 onChange={handleFileChange}
+                multiple
+                accept="image/*"
               />
 
               <i
@@ -100,7 +141,7 @@ const Ask = () => {
           </div>
         </div>
       </div>
-      <div className="animate__animated animate__slideInUp">
+      <div className="animate__animated animate__slideInUp" ref={sidebarRef}>
         <Attachments
           showAttch={showAttch}
           onClose={() => setShowAttch(!showAttch)}
