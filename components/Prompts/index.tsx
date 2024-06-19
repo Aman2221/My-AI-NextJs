@@ -15,7 +15,10 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
           </span>
           <div className="grid grid-cols-2 gap-4 mt-10">
             {dummyData.examplePrompts.map((item, index) => (
-              <div key={index} className="bg-slate-900 p-4 rounded-lg">
+              <div
+                key={index}
+                className="bg-white shadow-md dark:shadow-none dark:bg-slate-900 p-4 rounded-lg"
+              >
                 <span className="text-sm">{item}</span>
               </div>
             ))}

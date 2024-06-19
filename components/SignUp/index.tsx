@@ -6,10 +6,10 @@ const SignUpPage = () => {
   return (
     <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInLeft">
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
-      <span className="text-white text-md text-center pt-3 font-semibold">
+      <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">
         Create Your Account
       </span>
-      <span className="text-white text-sm text-center pt-3 font-semibold">
+      <span className="text-black dark:text-white text-sm text-center pt-3 font-semibold">
         Create an account to view and manage <br /> your work
       </span>
       <input
@@ -20,14 +20,14 @@ const SignUpPage = () => {
 
       <Link
         href="/home"
-        className=" text-center button-bg text-blue-200 w-full p-2 text-md mt-6"
+        className=" text-center button-bg text-blue-600 dark:text-blue-200 w-full p-2 text-md mt-6"
       >
         Continue
       </Link>
 
       <span className="mt-6">
         <span>Already have an account ? </span>
-        <Link className="text-blue-200" href={"/login"}>
+        <Link className="text-blue-600 dark:text-blue-200" href={"/login"}>
           Log in
         </Link>
       </span>

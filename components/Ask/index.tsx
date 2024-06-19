@@ -82,11 +82,17 @@ const Ask = () => {
               >
                 <span
                   onClick={() => handleRemoveImg(index)}
-                  className="absolute top-1 w-5 h-5 bg-slate-600 left-1 rounded-full flex items-center justify-center"
+                  className="absolute top-1 w-5 h-5 bg-slate-50 shadow-md dark:bg-slate-600 left-1 rounded-full flex items-center justify-center"
                 >
                   <i className="bx bx-x"></i>
                 </span>
-                <Image height={50} width={50} alt="img" src={objectUrl} />
+                <Image
+                  height={50}
+                  width={50}
+                  alt="img"
+                  src={objectUrl}
+                  className="shadow-lg"
+                />
               </div>
             );
           })}

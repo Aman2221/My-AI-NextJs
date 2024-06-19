@@ -88,7 +88,7 @@ const Attachments = ({
           : "absolute -left-full transition-all w-full"
       }
     >
-      <div className="bg-slate-900 py-6 w-full">
+      <div className="bg-slate-50 dark:bg-slate-900 py-6 w-full">
         <div className="grid grid-cols-3 gap-x-4 gap-y-6 gap place-items-center ">
           {docsData.map((item, index) => {
             return (

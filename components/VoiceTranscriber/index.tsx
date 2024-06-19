@@ -93,7 +93,7 @@ const VoiceTrans = ({
           : "absolute -left-full transition-all w-full"
       }
     >
-      <div className="bg-slate-900 py-6 w-full h-34 flex flex-col justify-center items-center">
+      <div className="bg-slate-50 dark:bg-slate-900 py-6 w-full h-34 flex flex-col justify-center items-center">
         {transcript && (
           <span className="mt-4 text-md text-center">{transcript}</span>
         )}

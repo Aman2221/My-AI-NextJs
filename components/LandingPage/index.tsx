@@ -11,7 +11,7 @@ const LandingPage = ({ showLoader }: { showLoader: boolean }) => {
         src={"/img/logo.svg"}
         className="animate__animated animate__zoomIn"
       />
-      <span className="text-white text-md text-center pt-3 font-semibold">
+      <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">
         Your AI Companion for <br /> Everyday Success
       </span>
     </div>

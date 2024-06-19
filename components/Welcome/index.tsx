@@ -11,13 +11,13 @@ const WelcomePage = () => {
       <div className="flex items-center gap-4 w-full mt-10 px-3">
         <Link
           href="sign-up"
-          className="button-bg text-blue-200 w-full p-2 text-md rounded-lg text-center"
+          className="button-bg text-black dark:text-blue-200 w-full p-2 text-md rounded-lg text-center"
         >
           Sign up
         </Link>
         <Link
           href="login"
-          className="button-bg text-blue-200 w-full p-2 text-md rounded-lg text-center"
+          className="button-bg text-black dark:text-blue-200 w-full p-2 text-md rounded-lg text-center"
         >
           Log in
         </Link>

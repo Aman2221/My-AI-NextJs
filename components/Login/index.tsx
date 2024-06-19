@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInRight">
       <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
-      <span className="text-white text-md text-center pt-3 font-semibold">
+      <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">
         Welcome back
       </span>
       <input
@@ -17,14 +17,14 @@ const LoginPage = () => {
 
       <Link
         href="/home"
-        className=" text-center button-bg text-blue-200 w-full p-2 text-md mt-6"
+        className=" text-center button-bg text-blue-600 dark:text-blue-200 w-full p-2 text-md mt-6"
       >
         Continue
       </Link>
 
       <span className="mt-6">
         <span>Didn’t have an account ? </span>
-        <Link className="text-blue-200" href={"/sign-up"}>
+        <Link className="text-blue-600 dark:text-blue-200" href={"/sign-up"}>
           Sign up
         </Link>
       </span>
