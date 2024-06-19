@@ -7,7 +7,7 @@ const SideBar = () => {
     <div className="w-72 dark:bg-slate-800 h-dvh z-10 bg-slate-50">
       <div className="flex items-center bg-blue-500 gap-2 px-3  py-2">
         <Image height={28} width={28} alt="logo" src={"/img/logo.svg"} />
-        <span className="text-md dark:text-black text-whte">Aman Singh</span>
+        <span className="text-md dark:text-black text-white">Aman Singh</span>
       </div>
       <div className=" bg-white dark:bg-slate-900 px-3  py-2">
         <span className="text-md font-semibold">Account</span>
