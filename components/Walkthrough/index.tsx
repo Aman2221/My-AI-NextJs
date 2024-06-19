@@ -46,7 +46,7 @@ const Walkthrough = () => {
         <Link
           href="/welcome"
           className={
-            "text-white dark:text-black border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md absolute bottom-20 bg-blue-400"
+            "text-white dark:text-white border border-sky-500 bg-none px-6 mt-10 py-3 rounded-md absolute bottom-20 bg-blue-400"
           }
         >
           Get&nbsp;started
@@ -67,10 +67,10 @@ export const WalkthroughOne = () => {
   return (
     <>
       <Image height={200} width={200} alt="logo" src={"/img/walk1.svg"} />
-      <span className="text-black dark:text-black dark:text-white text-md text-center pt-3 font-semibold ">
+      <span className="text-black dark:text-white dark:text-white text-md text-center pt-3 font-semibold ">
         Walkthrough 1
       </span>
-      <span className="text-black dark:text-black dark:text-white text-sm text-center pt-3 font-normal px-10">
+      <span className="text-black dark:text-white dark:text-white text-sm text-center pt-3 font-normal px-10">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry.&nbsp;Lorem Ipsum has been the industrys standard dummy text
         ever since the 1500s
