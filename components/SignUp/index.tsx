@@ -54,8 +54,8 @@ const SignUpPage = () => {
   return (
     <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInLeft">
       <Image
-        height={200}
-        width={200}
+        height={100}
+        width={100}
         alt="logo"
         src={"/img/logo.svg"}
         priority
