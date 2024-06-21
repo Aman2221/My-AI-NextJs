@@ -2,8 +2,16 @@
 import React from "react";
 import Conversations from "../Conversatio";
 import dummyData from "@/json/index.json";
+import { useMyContext } from "@/context/my-context";
 
 const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
+  const { setrIsChatStarted, setPrompt } = useMyContext();
+
+  const handlePromptClick = (prompt: string) => {
+    setPrompt(prompt);
+    setrIsChatStarted(true);
+  };
+
   return (
     <>
       {isChatStarted ? (
@@ -16,6 +24,7 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
           <div className="grid grid-cols-2 gap-4 mt-10">
             {dummyData.examplePrompts.map((item, index) => (
               <div
+                onClick={() => handlePromptClick(item)}
                 key={index}
                 className="bg-white shadow-md dark:shadow-none dark:bg-slate-900 p-4 rounded-lg"
               >

@@ -30,9 +30,12 @@ const Conversations = () => {
           </div>
 
           <span id="user-question" className="text-md font-normal">
-            Use the invisible utility to hide an element, but still maintain its
-            place in the DOM, affecting the layout of other elements (compare
-            with hidden from the display documentation).
+            Hi [username], I am Your personal assistant. My build is in
+            development so please be patient while I gather more information
+            about you and your activities. I will assist you through finance,
+            health care, and personal growth.
+            <br /> <br />
+            See You Soon...!
           </span>
         </div>
       </div>

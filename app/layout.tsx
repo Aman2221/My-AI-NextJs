@@ -21,6 +21,7 @@ export default function RootLayout({
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"
         />
+        <link rel="icon" href="/img/logo.svg" sizes="any" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>

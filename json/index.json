@@ -106,11 +106,6 @@
       ],
       "themChoices" : [
         {
-          "name": "Light",
-          "isActive": false,
-          "icon": "bx-sun"
-        },
-        {
           "name": "Dark",
           "isActive": false,
           "icon": "bx-moon"

@@ -70,7 +70,6 @@ const Ask = () => {
       const user_uuid = "4e216b58-fc19-4002-940e-56511dac4cb9"; //this will come from localStorage
       formData.append("uuid", user_uuid);
       formData.append("file", file);
-      console.log("formData :", formData);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}api/upload_file`,
         {
@@ -78,7 +77,6 @@ const Ask = () => {
           body: formData,
         }
       );
-      console.log("response :", response);
       const data = await response?.json();
       if (response.ok) SuccessToast(data.message);
       else ErrorToast(data.message);
@@ -109,9 +107,6 @@ const Ask = () => {
             );
           })}
         </div>
-        <button className="" onClick={UploadFile}>
-          Upload
-        </button>
         <div className="flex items-center">
           {files.map((file, index) => {
             const objectUrl = URL.createObjectURL(file);

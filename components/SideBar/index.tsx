@@ -13,7 +13,7 @@ const SideBar = () => {
           src={"/img/logo.svg"}
           priority
         />
-        <span className="text-md dark:text-black text-white">Aman Singh</span>
+        <span className="text-md dark:text-black text-white">Test user</span>
       </div>
       <div className=" bg-white dark:bg-slate-900 px-3  py-2">
         <span className="text-md font-semibold">Account</span>
