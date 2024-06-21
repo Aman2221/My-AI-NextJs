@@ -44,9 +44,8 @@ const LoginPage = () => {
       if (response.ok) {
         //need to check this as for error also 204 ok response is coming from backend
         setUserToLocal(res.data.session_id);
-
-        router.push("/home");
         SuccessToast(res.message);
+        router.push("/home");
       } else ErrorToast(res.message);
     } else {
       ErrorToast("Invalid email or password");

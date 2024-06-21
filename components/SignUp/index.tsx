@@ -43,8 +43,9 @@ const SignUpPage = () => {
       const res = await response.json();
       if (response.ok) {
         setUserToLocal(res.data.session_id);
-        router.push("/home");
+
         SuccessToast(res.message);
+        router.push("/home");
       } else ErrorToast(res.message);
     } else {
       ErrorToast("Plesae enter all the details!");
