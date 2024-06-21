@@ -1,8 +1,39 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getSessionId, removeUserToLocal, signout_formdata } from "@/functions";
+import { useRouter } from "next/navigation";
+import { ErrorToast, SuccessToast } from "@/service/toast";
 
 const SideBar = () => {
+  const router = useRouter();
+  const handleLogout = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const session_id = getSessionId();
+    if (session_id) {
+      const formData = signout_formdata(session_id);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/signout`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formData.toString(),
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        removeUserToLocal();
+        router.push("/login");
+        SuccessToast(data.message);
+      } else ErrorToast(data.message);
+    } else {
+      ErrorToast("Invalid email or password");
+    }
+  };
+
   return (
     <div className="w-72 dark:bg-slate-800 h-dvh z-10 bg-slate-50">
       <div className="flex items-center bg-blue-500 gap-2 px-3  py-2">
@@ -24,9 +55,12 @@ const SideBar = () => {
           <span className="text-sm">info@gmail.com</span>
         </div>
 
-        <Link href="" className="text-xs text-blue-500 font-semibold">
+        <button
+          onClick={handleLogout}
+          className="text-xs text-blue-500 font-semibold"
+        >
           Sign out
-        </Link>
+        </button>
       </div>
       <div className=" flex items-center gap-3 px-3 py-2">
         <i className="bx bx-paper-plane"></i>

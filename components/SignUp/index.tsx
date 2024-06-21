@@ -7,7 +7,7 @@ import {
   check_req_feilds,
   signup_formdata,
   setUserToLocal,
-} from "@/funttions";
+} from "@/functions";
 import { ErrorToast, SuccessToast } from "@/service/toast";
 import { useRouter } from "next/navigation";
 
@@ -40,12 +40,12 @@ const SignUpPage = () => {
         }
       );
 
-      const data = await response.json();
+      const res = await response.json();
       if (response.ok) {
-        setUserToLocal();
+        setUserToLocal(res.data.session_id);
         router.push("/home");
-        SuccessToast(data.message);
-      } else ErrorToast(data.message);
+        SuccessToast(res.message);
+      } else ErrorToast(res.message);
     } else {
       ErrorToast("Plesae enter all the details!");
     }

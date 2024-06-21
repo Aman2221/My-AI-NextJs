@@ -1,8 +1,15 @@
+"use client";
 import { useMyContext } from "@/context/my-context";
-import React from "react";
+import React, { useState } from "react";
+import SelectedImages from "../SelectedImages";
 
 const Conversations = () => {
-  const { prompt } = useMyContext();
+  const { prompt, files, setFiles } = useMyContext();
+
+  const handleRemoveImg = (index: number) => {
+    const updFiles = files.splice(index, 1);
+    setFiles([...files]);
+  };
 
   return (
     <>
@@ -12,12 +19,30 @@ const Conversations = () => {
           <i className="bx bxs-user-circle text-black dark:text-white text-4xl"></i>
           <span className="text-lg font-semibold">You</span>
         </div>
-        <div className="flex gap-3 items-center mb-3">
-          <i className="invisible bx bxs-user-circle text-black dark:text-white text-4xl "></i>
-          <span id="user-question" className="text-md font-normal">
-            {prompt}
-          </span>
-        </div>
+
+        {prompt ? (
+          <div className="flex gap-3 items-center mb-3">
+            <i className="invisible bx bxs-user-circle text-black dark:text-white text-4xl "></i>
+            <span id="user-question" className="text-md font-normal">
+              {prompt}
+            </span>
+          </div>
+        ) : (
+          <></>
+        )}
+        {files.length ? (
+          <div className="flex gap-3 items-center mb-3">
+            <i className="invisible bx bxs-user-circle text-black dark:text-white text-4xl "></i>
+            <SelectedImages
+              files={files}
+              handleRemoveImg={handleRemoveImg}
+              imgHeight={200}
+              imgWidth={200}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
 
       {/* response from AI */}

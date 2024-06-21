@@ -9,7 +9,7 @@ import {
   removeUserToLocal,
   setUserToLocal,
   signout_formdata,
-} from "@/funttions";
+} from "@/functions";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
@@ -40,40 +40,14 @@ const LoginPage = () => {
         }
       );
 
-      const data = await response.json();
+      const res = await response.json();
       if (response.ok) {
         //need to check this as for error also 204 ok response is coming from backend
-        setUserToLocal();
+        setUserToLocal(res.data.session_id);
+
         router.push("/home");
-        SuccessToast(data.message);
-      } else ErrorToast(data.message);
-    } else {
-      ErrorToast("Invalid email or password");
-    }
-  };
-
-  const handleLogout = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const session_id = localStorage.getItem("uesr_session_id");
-    if (session_id) {
-      const formData = signout_formdata(session_id);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/signout`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        removeUserToLocal();
-        router.push("/login");
-        SuccessToast(data.message);
-      } else ErrorToast(data.message);
+        SuccessToast(res.message);
+      } else ErrorToast(res.message);
     } else {
       ErrorToast("Invalid email or password");
     }
