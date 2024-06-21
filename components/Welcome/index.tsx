@@ -6,7 +6,13 @@ const WelcomePage = () => {
   return (
     <div className="flex items-center justify-center h-dvh flex-col animate__animated animate__bounceInRight">
       <span className="text-lg">Welcome to Application</span>
-      <Image height={200} width={200} alt="logo" src={"/img/logo.svg"} />
+      <Image
+        height={200}
+        width={200}
+        alt="logo"
+        src={"/img/logo.svg"}
+        priority
+      />
       <span className="text-sm">Log with your Open AI account to continue</span>
       <div className="flex items-center gap-4 w-full mt-10 px-3">
         <Link

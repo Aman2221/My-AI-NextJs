@@ -9,6 +9,7 @@ const LandingPage = ({ showLoader }: { showLoader: boolean }) => {
         width={200}
         alt="logo"
         src={"/img/logo.svg"}
+        priority
         className="animate__animated animate__zoomIn"
       />
       <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">

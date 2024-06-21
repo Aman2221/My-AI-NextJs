@@ -40,6 +40,7 @@ const NavBar = () => {
             width={30}
             alt="logo with text"
             src={"/img/logo.svg"}
+            priority
           />
           <span className="text-md font-semibold">MyAI</span>
         </div>
