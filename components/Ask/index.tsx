@@ -52,6 +52,7 @@ const Ask = () => {
     }
   };
 
+  //need to do with NextAPI
   const UploadFile = async (e: React.FormEvent) => {
     e.preventDefault();
     const file = files[0];
@@ -90,6 +91,7 @@ const Ask = () => {
             return (
               <span
                 key={item}
+                onClick={UploadFile}
                 className="border border-slate-400 py-1 px-2 rounded-md"
               >
                 {item}

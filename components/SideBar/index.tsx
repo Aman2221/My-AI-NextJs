@@ -11,17 +11,13 @@ const SideBar = () => {
     e.preventDefault();
     const session_id = getSessionId();
     if (session_id) {
-      const formData = signout_formdata(session_id);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/signout`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
+      const response = await fetch("api/signout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ session_id }),
+      });
 
       const data = await response.json();
       if (response.ok) {

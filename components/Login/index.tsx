@@ -22,17 +22,13 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (userData.email_id && userData.password) {
-      const formData = login_formdata(userData);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/signin`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
+      const response = await fetch("api/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/form-data",
+        },
+        body: JSON.stringify(userData),
+      });
 
       const res = await response.json();
       if (response.ok) {

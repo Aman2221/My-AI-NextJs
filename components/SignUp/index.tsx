@@ -28,22 +28,17 @@ const SignUpPage = () => {
     e.preventDefault();
     const check_values = check_req_feilds(userData);
     if (check_values) {
-      const formData = signup_formdata(userData);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/signup`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
+      const response = await fetch("api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
       const res = await response.json();
       if (response.ok) {
         setUserToLocal(res.data.session_id);
-
         SuccessToast(res.message);
         router.push("/home");
       } else ErrorToast(res.message);

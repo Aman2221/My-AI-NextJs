@@ -40,12 +40,14 @@ export default function RootLayout({
           href="/icons/icon-512x512.png"
         />
         <meta name="theme-color" content="#000000" />
+      </Head>
+      <head>
         <link
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"
         />
         <link rel="icon" href="/img/logo.svg" sizes="any" />
-      </Head>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
