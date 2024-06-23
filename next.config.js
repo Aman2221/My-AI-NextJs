@@ -22,4 +22,8 @@ module.exports = withPWA({
   runtimeCaching,
   register: true,
   skipWaiting: true,
+  reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  },
 })(nextConfig);
