@@ -91,7 +91,6 @@ const Ask = () => {
             return (
               <span
                 key={item}
-                onClick={UploadFile}
                 className="border border-slate-400 py-1 px-2 rounded-md"
               >
                 {item}

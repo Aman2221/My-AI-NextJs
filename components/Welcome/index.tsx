@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const WelcomePage = () => {
   return (
-    <div className="flex items-center justify-center h-dvh flex-col animate__animated animate__bounceInRight">
+    <div className="flex items-center justify-center h-dvh flex-col">
       <span className="text-lg">Welcome to Application</span>
       <Image
         height={200}

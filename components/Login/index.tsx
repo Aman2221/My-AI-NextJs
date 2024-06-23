@@ -43,7 +43,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInRight">
+    <div className="flex flex-col items-center w-full px-3">
       <Image
         height={100}
         width={100}
