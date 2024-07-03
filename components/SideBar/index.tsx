@@ -22,7 +22,7 @@ const SideBar = () => {
       const data = await response.json();
       if (response.ok) {
         removeUserToLocal();
-        router.push("/login");
+        setTimeout(() => router.push("/login"), 1500);
         SuccessToast(data.message);
       } else ErrorToast(data.message);
     } else {

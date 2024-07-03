@@ -7,8 +7,8 @@ const WelcomePage = () => {
     <div className="flex items-center justify-center h-dvh flex-col">
       <span className="text-lg">Welcome to Application</span>
       <Image
-        height={200}
-        width={200}
+        height={100}
+        width={100}
         alt="logo"
         src={"/img/logo.svg"}
         priority

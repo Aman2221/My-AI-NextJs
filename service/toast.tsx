@@ -38,3 +38,16 @@ export const WarningToast = (message: string, position = "top-right") =>
     theme: "light",
     transition: Bounce,
   });
+
+export const PromiseToast = (message: string, position = "top-right") =>
+  toast.warn(message, {
+    position: position as any,
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+  });

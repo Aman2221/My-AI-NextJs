@@ -2,12 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  init_sign_up,
-  check_req_feilds,
-  signup_formdata,
-  setUserToLocal,
-} from "@/functions";
+import { init_sign_up, check_req_feilds, setUserToLocal } from "@/functions";
 import { ErrorToast, SuccessToast } from "@/service/toast";
 import { useRouter } from "next/navigation";
 
@@ -40,7 +35,7 @@ const SignUpPage = () => {
       if (response.ok) {
         setUserToLocal(res.data.session_id);
         SuccessToast(res.message);
-        router.push("/home");
+        setTimeout(() => router.push("/home"), 1500);
       } else ErrorToast(res.message);
     } else {
       ErrorToast("Plesae enter all the details!");
@@ -49,13 +44,7 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col items-center w-full px-3 animate__animated animate__bounceInLeft">
-      <Image
-        height={100}
-        width={100}
-        alt="logo"
-        src={"/img/logo.svg"}
-        priority
-      />
+      <Image height={50} width={50} alt="logo" src={"/img/logo.svg"} priority />
       <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">
         Create Your Account
       </span>

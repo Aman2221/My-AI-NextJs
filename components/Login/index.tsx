@@ -35,7 +35,7 @@ const LoginPage = () => {
         //need to check this as for error also 204 ok response is coming from backend
         setUserToLocal(res.data.session_id);
         SuccessToast(res.message);
-        router.push("/home");
+        setTimeout(() => router.push("/home"), 1500);
       } else ErrorToast(res.message);
     } else {
       ErrorToast("Invalid email or password");
@@ -44,13 +44,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center w-full px-3">
-      <Image
-        height={100}
-        width={100}
-        alt="logo"
-        src={"/img/logo.svg"}
-        priority
-      />
+      <Image height={50} width={50} alt="logo" src={"/img/logo.svg"} priority />
       <span className="text-black dark:text-white text-md text-center pt-3 font-semibold">
         Welcome back
       </span>
