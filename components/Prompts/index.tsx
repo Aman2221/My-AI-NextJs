@@ -31,7 +31,7 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
               <div
                 onClick={() => handlePromptClick(item)}
                 key={index}
-                className="bg-white shadow-md dark:shadow-none dark:bg-slate-900 p-4 rounded-lg"
+                className="bg-white shadow-md dark:shadow-none dark:bg-slate-900 p-4 rounded-lg "
               >
                 <span className="text-sm">{item}</span>
               </div>

@@ -2,10 +2,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import SideBar from "../SideBar";
+import { useMyContext } from "@/context/my-context";
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const { setrIsChatStarted } = useMyContext();
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -44,14 +46,17 @@ const NavBar = () => {
           />
           <span className="text-md font-semibold">MyAI</span>
         </div>
-        <i className="bx bx-refresh text-2xl"></i>
+        <i
+          onClick={() => setrIsChatStarted(false)}
+          className="bx bx-refresh text-2xl"
+        ></i>
       </div>
       <div
         ref={sidebarRef}
         className={
           showSidebar
-            ? "absolute left-0 transition-all"
-            : "absolute -left-72 transition-all"
+            ? "absolute left-0 transition-all z-20"
+            : "absolute -left-72 transition-all z-20"
         }
       >
         <SideBar />

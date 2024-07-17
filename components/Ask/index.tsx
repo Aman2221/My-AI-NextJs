@@ -85,7 +85,7 @@ const Ask = () => {
 
   return (
     <>
-      <div className="absolute bottom-0 -z-10">
+      <div className="absolute bottom-0 bg-gradient-blue ">
         <div className="flex gap-2 overflow-y-scroll w-dvw mb-3 pl-3">
           {dummyData.categories.map((item: string) => {
             return (

@@ -36,3 +36,12 @@ body {
 .button-bg {
   background-color: #81abff63;
 }
+
+.bg-gradient-blue {
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
