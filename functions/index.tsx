@@ -56,13 +56,14 @@ export const file_formdata = (file: any) => {
   return formData;
 };
 
-export const setUserToLocal = (session_id: number) => {
+export const setUserToLocal = (data: { [key: string]: string }) => {
   localStorage.setItem("isUserLoggedin", "true");
-  localStorage.setItem("session_id", session_id.toString());
+  localStorage.setItem("user", JSON.stringify(data));
 };
 
-export const getUserToLocal = () => {
-  return localStorage.getItem("isUserLoggedin");
+export const getUserFromLocal = () => {
+  const user = JSON.parse(localStorage.getItem("user") as string);
+  return user.user;
 };
 
 export const removeUserToLocal = () => {

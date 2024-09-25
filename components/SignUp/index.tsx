@@ -33,7 +33,7 @@ const SignUpPage = () => {
 
       const res = await response.json();
       if (response.ok) {
-        setUserToLocal(res.data.session_id);
+        setUserToLocal(res.data);
         SuccessToast(res.message);
         setTimeout(() => router.push("/home"), 1500);
       } else ErrorToast(res.message);

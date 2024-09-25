@@ -9,8 +9,8 @@ import React, {
 } from "react";
 
 interface MyContextProps {
-  prompt: string;
-  setPrompt: React.Dispatch<React.SetStateAction<string>>;
+  prompts: { question: string; answer: string }[];
+  setPrompt: Dispatch<SetStateAction<never[]>>;
   isChatStarted: boolean;
   setrIsChatStarted: React.Dispatch<React.SetStateAction<boolean>>;
   files: File[];
@@ -20,14 +20,14 @@ interface MyContextProps {
 const MyContext = createContext<MyContextProps | undefined>(undefined);
 
 export const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [prompt, setPrompt] = useState<string>("");
+  const [prompts, setPrompt] = useState([]);
   const [isChatStarted, setrIsChatStarted] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
 
   return (
     <MyContext.Provider
       value={{
-        prompt,
+        prompts,
         setPrompt,
         isChatStarted,
         setrIsChatStarted,

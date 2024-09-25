@@ -33,7 +33,7 @@ const LoginPage = () => {
       const res = await response.json();
       if (response.ok) {
         //need to check this as for error also 204 ok response is coming from backend
-        setUserToLocal(res.data.session_id);
+        setUserToLocal(res.data);
         SuccessToast(res.message);
         setTimeout(() => router.push("/home"), 1500);
       } else ErrorToast(res.message);

@@ -1,21 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Conversations from "../Conversatio";
 import dummyData from "@/json/index.json";
 import { useMyContext } from "@/context/my-context";
 import { SuccessToast } from "@/service/toast";
 
 const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
-  const { setrIsChatStarted, setPrompt } = useMyContext();
+  const { setrIsChatStarted, setPrompt, prompts } = useMyContext();
 
   const handlePromptClick = (prompt: string) => {
-    setPrompt(prompt);
+    // setPrompt([]);
     setrIsChatStarted(true);
   };
 
   const handleToast = () => {
     SuccessToast("Hi there");
   };
+
+  useEffect(() => console.log("prompts :", prompts), []);
 
   return (
     <>

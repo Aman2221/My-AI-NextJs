@@ -6,11 +6,12 @@ import VoiceTrans from "../VoiceTranscriber";
 import { useMyContext } from "@/context/my-context";
 import dummyData from "@/json/index.json";
 import { ErrorToast, SuccessToast } from "@/service/toast";
-import SelectedImages from "../SelectedImages";
+import { getUserFromLocal } from "@/functions";
 
 const Ask = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const { setrIsChatStarted, setPrompt, files, setFiles } = useMyContext();
+  const { setrIsChatStarted, setPrompt, files, setFiles, prompts } =
+    useMyContext();
   const [search, setSearch] = useState("");
   const [showAttch, setShowAttch] = useState(false);
   const [showVoice, setShowVoice] = useState(false);
@@ -32,9 +33,7 @@ const Ask = () => {
 
   const handelSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setrIsChatStarted(true);
-    setPrompt(search);
-    setSearch("");
+    handleSendMessage();
   };
 
   const handleRemoveImg = (index: number) => {
@@ -49,6 +48,39 @@ const Ask = () => {
     ) {
       setShowAttch(false);
       setShowVoice(false);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    const user = getUserFromLocal();
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/smart_engine/chat_with_docs_faiss`;
+    try {
+      const response = await fetch(url, {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uuid: user.uuid,
+          question: search,
+        }), // body data type must match "Content-Type" header
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json(); // or text(), depending on the response type
+      setrIsChatStarted(true);
+      setPrompt([
+        ...prompts,
+        { question: search, answer: result.message },
+      ] as any);
+      setSearch("");
+      console.log("result :", result);
+      return result;
+    } catch (error) {
+      ErrorToast("There was an error with the POST request:");
     }
   };
 
@@ -85,7 +117,7 @@ const Ask = () => {
 
   return (
     <>
-      <div className="absolute bottom-0 bg-gradient-blue ">
+      <div className="fixed bottom-0 bg-gradient-blue ">
         <div className="flex gap-2 overflow-y-scroll w-dvw mb-3 pl-3">
           {dummyData.categories.map((item: string) => {
             return (
