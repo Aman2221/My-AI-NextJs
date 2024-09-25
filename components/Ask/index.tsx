@@ -6,7 +6,7 @@ import VoiceTrans from "../VoiceTranscriber";
 import { useMyContext } from "@/context/my-context";
 import dummyData from "@/json/index.json";
 import { ErrorToast, SuccessToast } from "@/service/toast";
-import { getUserFromLocal } from "@/functions";
+import { getUserFromLocal, handleSendMessage } from "@/functions";
 
 const Ask = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const Ask = () => {
 
   const handelSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSendMessage();
+    getResponseFromChatAPI();
   };
 
   const handleRemoveImg = (index: number) => {
@@ -51,36 +51,16 @@ const Ask = () => {
     }
   };
 
-  const handleSendMessage = async () => {
-    const user = getUserFromLocal();
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/smart_engine/chat_with_docs_faiss`;
-    try {
-      const response = await fetch(url, {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          uuid: user.uuid,
-          question: search,
-        }), // body data type must match "Content-Type" header
-      });
+  const getResponseFromChatAPI = async () => {
+    const data = await handleSendMessage(search);
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const result = await response.json(); // or text(), depending on the response type
+    if (data) {
       setrIsChatStarted(true);
       setPrompt([
         ...prompts,
-        { question: search, answer: result.message },
+        { question: search, answer: data.message },
       ] as any);
       setSearch("");
-      console.log("result :", result);
-      return result;
-    } catch (error) {
-      ErrorToast("There was an error with the POST request:");
     }
   };
 

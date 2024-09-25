@@ -1,3 +1,5 @@
+import { ErrorToast } from "@/service/toast";
+
 export const init_sign_up = {
   firstname: "",
   lastname: "",
@@ -72,4 +74,31 @@ export const removeUserToLocal = () => {
 
 export const getSessionId = () => {
   return localStorage.getItem("session_id");
+};
+
+export const handleSendMessage = async (query: string) => {
+  const user = getUserFromLocal();
+  const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/smart_engine/chat_with_docs_faiss`;
+  try {
+    const response = await fetch(url, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        uuid: user.uuid,
+        question: query,
+      }), // body data type must match "Content-Type" header
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const result = await response.json(); // or text(), depending on the response type
+
+    return result;
+  } catch (error) {
+    ErrorToast("There was an error with the POST request:");
+  }
 };

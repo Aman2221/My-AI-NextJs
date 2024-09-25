@@ -11,8 +11,6 @@ const Conversations = () => {
     setFiles([...files]);
   };
 
-  console.log("prompts :", prompts),
-    useEffect(() => console.log("prompts :", prompts), []);
   return (
     <>
       {/* for user */}

@@ -7,6 +7,7 @@ import {
 } from "@/interfaces";
 import { useState, useRef, useEffect } from "react";
 import { useMyContext } from "@/context/my-context";
+import { handleSendMessage } from "@/functions";
 
 const VoiceTrans = ({
   showTrans,
@@ -15,7 +16,7 @@ const VoiceTrans = ({
   showTrans: boolean;
   onClose: () => void;
 }) => {
-  const { setrIsChatStarted, setPrompt } = useMyContext();
+  const { setrIsChatStarted, setPrompt, prompts } = useMyContext();
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [transcript, setTranscript] = useState<string>("");
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -79,10 +80,17 @@ const VoiceTrans = ({
     }
   };
 
-  const handleSend = () => {
-    setPrompt(transcript);
-    setrIsChatStarted(true);
-    setTranscript("");
+  const handleSend = async () => {
+    const data = await handleSendMessage(transcript);
+
+    if (data) {
+      setPrompt([
+        ...prompts,
+        { question: transcript, answer: data.message },
+      ] as any);
+      setrIsChatStarted(true);
+      setTranscript("");
+    }
   };
 
   return (

@@ -17,8 +17,6 @@ const ExamplePrompts = ({ isChatStarted }: { isChatStarted: boolean }) => {
     SuccessToast("Hi there");
   };
 
-  useEffect(() => console.log("prompts :", prompts), []);
-
   return (
     <>
       {isChatStarted ? (
